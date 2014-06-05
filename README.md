@@ -8,7 +8,7 @@ METARS are frequently used for estimating runway conditions at a given airport.
 
 ## Installation
 
-Add this to your `project.clj`
+Add this to `:dependencies` in your `project.clj`
 
 ```clojure
 [metar "0.1.0"]
@@ -23,6 +23,15 @@ user=> (:require 'metar)
 nil
 user=> (metar/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP107 T01940111")
 {:airport "KSFO", :day "04", :wind-direction "300", :wind-speed-knots "15", :wind-gust-knots "22"}
+```
+
+**Project**
+
+```clojure
+(ns weather-station.core
+  (:require [metar.core :as metar]))
+
+(metar/parse "KSFO 052534Z 20023KT")
 ```
 
 ## Resources
