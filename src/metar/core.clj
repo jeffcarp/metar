@@ -1,6 +1,15 @@
 (ns metar.core
   (:require [clojure.string :as string :only [split]]))
 
+(defn valid
+  "Validates a METAR."
+  [metar-str]
+  (let [parts (string/split metar-str #" ")]
+    (println "count parts" (count parts) parts)
+    (boolean
+      (and
+        (< 4 (count parts))))))
+
 (defn parse
   "Takes a string, retuns METAR weather data."
   [metar-str]

@@ -1,12 +1,20 @@
 (ns metar.core-test
   (:require [clojure.test :refer :all]
-            [metar.core :refer :all]))
+            [metar.test-data :as data]
+            [metar.core :as core]))
 
-(deftest test-parse
+(deftest valid
   (testing "parses airport"
-    (let [result (metar.core/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP107 T01940111")]
+    (let [result (core/valid (first data/metars))]
+    (is (= true result))
+)))
+
+(deftest parse
+  (testing "parses airport"
+    (let [result (core/parse (first data/metars))]
     (is (map? result))
     (is (= (:airport result) "KSFO"))
     (is (= (:wind-direction result) "300"))
     (is (= (:wind-speed-knots result) "15"))
     (is (= (:wind-gust-knots result) "22")))))
+
