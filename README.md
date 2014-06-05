@@ -1,8 +1,8 @@
 # metar
 
-DISCLAIMER: Not done! Do not use yet!
-
 A WMO-306 I.i.A compliant METAR weather report parser for Clojure.
+
+DISCLAIMER: NOT FEATURE COMPLETE, DO NOT USE YET
 
 METARS are frequently used for estimating runway conditions at a given airport.
 
