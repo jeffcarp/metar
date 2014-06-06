@@ -25,4 +25,7 @@
         (is (= (:wind-direction result) (:wind-direction metar-data)))
         (is (= (:wind-speed-knots result) (:wind-speed-knots metar-data)))
         (is (= (:wind-gust-knots result) (:wind-gust-knots metar-data)))
+        (is (= (:visibility result) (:visibility metar-data)))
+        (is (= (:cloud-cover result) (:cloud-cover metar-data)))
+        (is (= (:cloud-altitude result) (:cloud-altitude metar-data)))
 ))))

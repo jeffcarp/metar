@@ -10,6 +10,9 @@
     :wind-direction "300"
     :wind-speed-knots "15"
     :wind-gust-knots "22"
+    :visibility "10"
+    :cloud-cover "FEW"
+    :cloud-altitude "800"
   }
   {
     :raw "METAR KOAK 060653Z 33007KT 10SM FEW006 13/11 A2984 RMK AO2 SLP103 T01280106"
@@ -20,6 +23,9 @@
     :wind-direction "330"
     :wind-speed-knots "07"
     :wind-gust-knots nil
+    :visibility "10"
+    :cloud-cover "FEW"
+    :cloud-altitude "600"
   }
   {
     :raw "METAR KJFK 060751Z 32011KT 10SM BKN080 17/08 A2981 RMK AO2 SLP094 T01720083 $"
@@ -30,5 +36,8 @@
     :wind-direction "320"
     :wind-speed-knots "11"
     :wind-gust-knots nil
+    :visibility "10"
+    :cloud-cover "BKN"
+    :cloud-altitude "8000"
   }
   ])
