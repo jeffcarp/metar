@@ -1,14 +1,6 @@
 (ns metar.core
   (:require [clojure.string :as string :only [split replace]]))
 
-; TODO: Write full validation
-(defn valid
-  "Validates a METAR."
-  [metar-str]
-  (let [parts (string/split metar-str #" ")]
-    (and
-      (< 4 (count parts)))))
-
 (defn parts
   "Returns a vector of strings from a METAR string."
   [metar-str]

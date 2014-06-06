@@ -3,16 +3,6 @@
             [metar.test-data :as data]
             [metar.core :as core]))
 
-(deftest valid
-  (doseq [metar-data data/metars]
-    (testing (str "returns true: " (:raw metar-data))
-      (is (true? (core/valid (:raw metar-data))))))
-
-  (testing "returns false for an invalid METAR"
-    (let [result (core/valid "stuff")]
-      (is (false? result)))))
-
-
 (deftest summary 
   (doseq [metar-data data/metars]
     (testing (:raw metar-data)
@@ -30,5 +20,4 @@
         (is (= (:cloud-altitude result) (:cloud-altitude metar-data)))
         (is (= (:temperature result) (:temperature metar-data)))
         (is (= (:dewpoint result) (:dewpoint metar-data)))
-        (is (= (:altimiter result) (:altimiter metar-data)))
-))))
+        (is (= (:altimiter result) (:altimiter metar-data)))))))
