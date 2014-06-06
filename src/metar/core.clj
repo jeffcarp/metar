@@ -1,6 +1,7 @@
 (ns metar.core
   (:require [clojure.string :as string :only [split]]))
 
+; TODO: Write full validation
 (defn valid
   "Validates a METAR."
   [metar-str]
@@ -8,41 +9,55 @@
     (and
       (< 4 (count parts)))))
 
-(defn part
-  "Returns the requested string part of the METAR."
-  [metar-str ident]
+(defn parts
+  "Returns a vector of strings from a METAR string."
+  [metar-str]
   (let [parts (string/split metar-str #" ")]
-    (case ident
-      "airport"  (nth parts 0)
-      "datetime" (nth parts 1)
-      "wind"     (nth parts 2))))
+    (if (or (= "METAR" (first parts)) (= "SPECI" (first parts)))
+      (drop 1 parts)
+      parts)))
+
+(defn airport
+  "Returns the ICAO identifier of a METAR string."
+  [metar-str]
+  (first (parts metar-str)))
 
 (defn day
-  "Extracts the day of the month from the datetime."
-  [datetime-str]
-  (subs datetime-str 0 2))
+  "Extracts the day of the month from a METAR string."
+  [metar-str]
+  (subs (second (parts metar-str)) 0 2))
+
+(defn hour 
+  "Extracts the hour (24) from a METAR string."
+  [metar-str]
+  (subs (second (parts metar-str)) 2 4))
+
+(defn minute 
+  "Extracts the minute from a METAR string."
+  [metar-str]
+  (subs (second (parts metar-str)) 4 6))
 
 (defn wind-direction
-  [wind-str]
-  (subs wind-str 0 3))
-
-(defn wind-speed 
-  [wind-str]
-  (last (re-find #"(\d+)[G|KT]" (subs wind-str 3))))
-
-(defn wind-gust
-  [wind-str]
-  (last (re-find #"G(\d+)KT" (subs wind-str 3))))
-
-(defn parse
-  "Takes a string, retuns METAR weather data."
   [metar-str]
-  (let [section (partial part metar-str)]
-    {
-      :airport (section "airport") 
-      :day (day (section "datetime"))
-      :wind-direction (wind-direction (section "wind"))
-      :wind-speed-knots (wind-speed (section "wind"))
-      :wind-gust-knots (wind-gust (section "wind"))
-    }))
+  (subs (nth (parts metar-str) 2) 0 3))
 
+(defn wind-speed-knots
+  [metar-str]
+  (last (re-find #"(\d+)[G|KT]" (subs (nth (parts metar-str) 2) 3))))
+
+(defn wind-gust-knots
+  [metar-str]
+  (last (re-find #"G(\d+)KT" (subs (nth (parts metar-str) 2) 3))))
+
+(defn summary
+  "Returns a map of all data from a METAR string."
+  [metar-str]
+  {
+    :airport          (airport metar-str)
+    :day              (day metar-str)
+    :hour             (hour metar-str)
+    :minute           (minute metar-str)
+    :wind-direction   (wind-direction metar-str)
+    :wind-speed-knots (wind-speed-knots metar-str)
+    :wind-gust-knots  (wind-gust-knots metar-str)
+  })
