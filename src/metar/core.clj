@@ -64,6 +64,21 @@
         full-alt-str (str alt-str "00")]
     (string/replace full-alt-str #"^0+" "")))
 
+(defn temperature 
+  [metar-str]
+  (subs (nth (parts metar-str) 5) 0 2))
+
+(defn dewpoint 
+  [metar-str]
+  (subs (nth (parts metar-str) 5) 3 5))
+
+(defn altimiter 
+  [metar-str]
+  (let [alt-str (nth (parts metar-str) 6)
+        main-num (subs alt-str 1 3)
+        decimal (subs alt-str 3)]
+    (str main-num "." decimal)))
+
 (defn summary
   "Returns a map of all data from a METAR string."
   [metar-str]
@@ -78,4 +93,7 @@
     :visibility       (visibility metar-str)
     :cloud-cover      (cloud-cover metar-str)
     :cloud-altitude   (cloud-altitude metar-str)
+    :temperature      (temperature metar-str)
+    :dewpoint         (dewpoint metar-str)
+    :altimiter        (altimiter metar-str)
   })

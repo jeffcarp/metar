@@ -28,4 +28,7 @@
         (is (= (:visibility result) (:visibility metar-data)))
         (is (= (:cloud-cover result) (:cloud-cover metar-data)))
         (is (= (:cloud-altitude result) (:cloud-altitude metar-data)))
+        (is (= (:temperature result) (:temperature metar-data)))
+        (is (= (:dewpoint result) (:dewpoint metar-data)))
+        (is (= (:altimiter result) (:altimiter metar-data)))
 ))))

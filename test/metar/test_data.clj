@@ -13,6 +13,9 @@
     :visibility "10"
     :cloud-cover "FEW"
     :cloud-altitude "800"
+    :temperature "19"
+    :dewpoint "11"
+    :altimiter "29.85"
   }
   {
     :raw "METAR KOAK 060653Z 33007KT 10SM FEW006 13/11 A2984 RMK AO2 SLP103 T01280106"
@@ -26,6 +29,9 @@
     :visibility "10"
     :cloud-cover "FEW"
     :cloud-altitude "600"
+    :temperature "13"
+    :dewpoint "11"
+    :altimiter "29.84"
   }
   {
     :raw "METAR KJFK 060751Z 32011KT 10SM BKN080 17/08 A2981 RMK AO2 SLP094 T01720083 $"
@@ -39,5 +45,8 @@
     :visibility "10"
     :cloud-cover "BKN"
     :cloud-altitude "8000"
+    :temperature "17"
+    :dewpoint "08"
+    :altimiter "29.81"
   }
   ])
