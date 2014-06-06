@@ -11,7 +11,7 @@ METARS are frequently used for estimating runway conditions at a given airport.
 Add this to `:dependencies` in your `project.clj`
 
 ```clojure
-[metar "0.1.0"]
+[metar "0.2.0"]
 ```
 
 ## Usage
