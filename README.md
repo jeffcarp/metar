@@ -46,5 +46,4 @@ user=> (metar/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP
 
 Copyright &copy; 2014 Jeff Carpenter
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the [MIT License](LICENSE)
