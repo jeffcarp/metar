@@ -11,8 +11,9 @@
     :wind-speed-knots "15"
     :wind-gust-knots "22"
     :visibility "10"
-    :cloud-cover "FEW"
-    :cloud-altitude "800"
+    :sky-conditions [
+      { :kind "FEW" :altitude "008" }
+    ]
     :temperature "19"
     :dewpoint "11"
     :altimiter "29.85"
@@ -27,8 +28,9 @@
     :wind-speed-knots "07"
     :wind-gust-knots nil
     :visibility "10"
-    :cloud-cover "FEW"
-    :cloud-altitude "600"
+    :sky-conditions [
+      { :kind "FEW" :altitude "006" }
+    ]
     :temperature "13"
     :dewpoint "11"
     :altimiter "29.84"
@@ -43,10 +45,42 @@
     :wind-speed-knots "11"
     :wind-gust-knots nil
     :visibility "10"
-    :cloud-cover "BKN"
-    :cloud-altitude "8000"
+    :sky-conditions [
+      { :kind "BKN" :altitude "080" }
+    ]
     :temperature "17"
     :dewpoint "08"
     :altimiter "29.81"
+    :remarks [
+      "A02"
+      "SLP094"
+      "T01720083"
+      "$"
+    ]
+  }
+  {
+    :raw "METAR KORD 072051Z 12012KT 10SM FEW075 BKN200 OVC250 27/09 A2988 RMK AO2 SLP114 T02670094 55014"
+    :airport "KORD"
+    :day "07"
+    :hour "20"
+    :minute "51"
+    :wind-direction "120"
+    :wind-speed-knots "12"
+    :wind-gust-knots nil
+    :visibility "10"
+    :sky-conditions [
+      { :kind "FEW" :altitude "075" }
+      { :kind "BKN" :altitude "200" }
+      { :kind "OVC" :altitude "250" }
+    ]
+    :temperature "27"
+    :dewpoint "09"
+    :altimiter "29.88"
+    :remarks [
+      "A02"
+      "SLP114"
+      "T02670094"
+      "55014"
+    ]
   }
   ])
