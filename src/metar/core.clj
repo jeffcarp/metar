@@ -87,7 +87,6 @@
 (defn sky-conditions
   "Returns a vector of maps for the sky conditions."
   [metar-str]
-  ; TODO: Improve this regex to match all conditions
   (let [condition-parts (find-parts #"(SKC|CLR|NSC|FEW|SCT|BKN|OVC)\d{3}" metar-str)]
     (map (fn [condstr] { :kind (subs condstr 0 3) :altitude (subs condstr 3) }) condition-parts)))
 
