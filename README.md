@@ -36,6 +36,10 @@ user=> (metar/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP
 (metar/parse "KSFO 052534Z 20023KT")
 ```
 
+## Todo
+
+- [ ] Support CAVOK visibility token
+
 ## Resources
 
 - [Wikipedia METAR](http://en.wikipedia.org/wiki/METAR)
