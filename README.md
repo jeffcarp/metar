@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/jeffcarp/metar.svg?branch=master)](https://travis-ci.org/jeffcarp/metar)
 
+[![Clojars Project](http://clojars.org/metar/latest-version.svg)](http://clojars.org/metar)
+
 A WMO-306 I.i.A compliant METAR weather report parser for Clojure.
 
 DISCLAIMER: NOT FEATURE COMPLETE, DO NOT USE YET
