@@ -39,6 +39,7 @@ user=> (metar/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP
 ## Todo
 
 - [ ] Support CAVOK visibility token
+- [ ] BR phenomenon was added, add rest of whatever category BR is in
 
 ## Resources
 

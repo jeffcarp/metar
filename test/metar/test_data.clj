@@ -11,6 +11,7 @@
     :wind-speed-knots "15"
     :wind-gust-knots "22"
     :visibility-miles "10"
+    :phenomena []
     :sky-conditions [
       { :kind "FEW" :altitude "008" }
     ]
@@ -27,6 +28,7 @@
     :wind-direction "330"
     :wind-speed-knots "07"
     :visibility-miles "10"
+    :phenomena []
     :sky-conditions [
       { :kind "FEW" :altitude "006" }
     ]
@@ -44,6 +46,7 @@
     :wind-speed-knots "11"
     :wind-gust-knots nil
     :visibility-miles "10"
+    :phenomena []
     :sky-conditions [
       { :kind "BKN" :altitude "080" }
     ]
@@ -67,6 +70,7 @@
     :wind-speed-knots "12"
     :wind-gust-knots nil
     :visibility-miles "10"
+    :phenomena []
     :sky-conditions [
       { :kind "FEW" :altitude "075" }
       { :kind "BKN" :altitude "200" }
@@ -91,10 +95,10 @@
     :wind-direction "330"
     :wind-speed-knots "18"
     :wind-gust-knots nil
-    :wind-variable ["290" "360"]
+    :wind-variable-from-to ["290" "360"]
     :visibility-miles "1/2"
     :runway-visual-range [
-      { :runway "31" :feet 2700 }
+      { :runway "31" :feet "2700" }
     ]
     :vertical-visibility "008"
     :phenomena ["SN" "BLSN" "FG"]
@@ -118,6 +122,9 @@
     :wind-speed-knots "02"
     :visibility-miles "3"
     :phenomena ["BR"]
+    :sky-conditions [
+      { :kind "CLR" :altitude "" }
+    ]
     :temperature "15"
     :dewpoint "12"
     :altimiter "30.12"

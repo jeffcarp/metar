@@ -15,7 +15,7 @@
         (is (= (:wind-direction result) (:wind-direction metar-data)))
         (is (= (:wind-speed-knots result) (:wind-speed-knots metar-data)))
         (is (= (:wind-gust-knots result) (:wind-gust-knots metar-data)))
-        (is (= (:wind-variable result) (:wind-variable metar-data)))
+        (is (= (:wind-variable-from-to result) (:wind-variable-from-to metar-data)))
         (is (= (:visibility-miles result) (:visibility-miles metar-data)))
         (is (= (:runway-visual-range result) (:runway-visual-range metar-data)))
         (is (= (:sky-conditions result) (:sky-conditions metar-data)))
