@@ -79,7 +79,7 @@
 (defn visibility-miles
   "Returns a string with the visibility."
   [metar-str]
-  (let [visibility-str (find-part #"[\d\/]+SM" metar-str)]
+  (let [visibility-str (find-part #"[\d\/]+SM|CAVOK" metar-str)]
     (string/replace visibility-str #"SM" "")))
 
 (defn temperature 
@@ -97,7 +97,7 @@
 (defn altimiter 
   "Returns a string of the altimiter setting in inHg."
   [metar-str]
-  (let [altimiter-str (find-part #"A\d{4}" metar-str)
+  (let [altimiter-str (find-part #"[AQ]\d{4}" metar-str)
         main-num (subs altimiter-str 1 3)
         decimal (subs altimiter-str 3)]
     (str main-num "." decimal)))
@@ -108,7 +108,7 @@
   (let [condition-parts (find-parts #"(SKC|CLR|NSC|FEW|SCT|BKN|OVC)\d{0,3}" metar-str)
         condition-maps (map (fn [condstr] { :kind (subs condstr 0 3) :altitude (subs condstr 3) }) condition-parts)]
     (if (empty? condition-maps)
-      nil
+      [] 
       condition-maps)))
 
 (defn phenomena

@@ -102,6 +102,7 @@
     ]
     :vertical-visibility "008"
     :phenomena ["SN" "BLSN" "FG"]
+    :sky-conditions []
     :temperature "00"
     :dewpoint "M03"
     :altimiter "29.91"
@@ -131,5 +132,22 @@
     :remarks [
       "AO2"
     ]
+  }
+  {
+    :raw "ORER 150600Z 02004KT CAVOK 34/06 Q1008"
+    :report-type nil
+    :production nil
+    :airport "ORER"
+    :day "15"
+    :hour "06"
+    :minute "00"
+    :wind-direction "020"
+    :wind-speed-knots "04"
+    :visibility-miles "CAVOK"
+    :phenomena []
+    :sky-conditions []
+    :temperature "34"
+    :dewpoint "06"
+    :altimiter "10.08"
   }
 ])
