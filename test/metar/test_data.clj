@@ -10,7 +10,7 @@
     :wind-direction "300"
     :wind-speed-knots "15"
     :wind-gust-knots "22"
-    :visibility "10"
+    :visibility-miles "10"
     :sky-conditions [
       { :kind "FEW" :altitude "008" }
     ]
@@ -26,8 +26,7 @@
     :minute "53"
     :wind-direction "330"
     :wind-speed-knots "07"
-    :wind-gust-knots nil
-    :visibility "10"
+    :visibility-miles "10"
     :sky-conditions [
       { :kind "FEW" :altitude "006" }
     ]
@@ -44,7 +43,7 @@
     :wind-direction "320"
     :wind-speed-knots "11"
     :wind-gust-knots nil
-    :visibility "10"
+    :visibility-miles "10"
     :sky-conditions [
       { :kind "BKN" :altitude "080" }
     ]
@@ -67,7 +66,7 @@
     :wind-direction "120"
     :wind-speed-knots "12"
     :wind-gust-knots nil
-    :visibility "10"
+    :visibility-miles "10"
     :sky-conditions [
       { :kind "FEW" :altitude "075" }
       { :kind "BKN" :altitude "200" }
@@ -83,4 +82,47 @@
       "55014"
     ]
   }
-  ])
+  {
+    :raw "METAR KBNA 281250Z 33018KT 290V360 1/2SM R31/2700FT SN BLSN FG VV008 00/M03 A2991 RMK RAE42SNB42"
+    :airport "KBNA"
+    :day "28"
+    :hour "12"
+    :minute "50"
+    :wind-direction "330"
+    :wind-speed-knots "18"
+    :wind-gust-knots nil
+    :wind-variable ["290" "360"]
+    :visibility-miles "1/2"
+    :runway-visual-range [
+      { :runway "31" :feet 2700 }
+    ]
+    :vertical-visibility "008"
+    :phenomena ["SN" "BLSN" "FG"]
+    :temperature "00"
+    :dewpoint "M03"
+    :altimiter "29.91"
+    :remarks [
+      "RAE42"
+      "SNB42"
+    ]
+  }
+  {
+    :raw "METAR KSFO 041453Z AUTO VRB02KT 3SM BR CLR 15/12 A3012 RMK AO2"
+    :report-type "METAR"
+    :production "AUTO"
+    :airport "KSFO"
+    :day "04"
+    :hour "14"
+    :minute "53"
+    :wind-direction "VRB"
+    :wind-speed-knots "02"
+    :visibility-miles "3"
+    :phenomena ["BR"]
+    :temperature "15"
+    :dewpoint "12"
+    :altimiter "30.12"
+    :remarks [
+      "AO2"
+    ]
+  }
+])

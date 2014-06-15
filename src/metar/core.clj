@@ -46,35 +46,49 @@
 (defn wind-direction
   [metar-str]
   (let [wind-str (find-part #"\d{3}[0-9A-Z]+KT$" metar-str)]
-    (subs wind-str 0 3)))
+    (if (empty? wind-str)
+      nil
+      (subs wind-str 0 3))))
 
 (defn wind-speed-knots
   [metar-str]
-  (let [wind-str (find-part #"\d{3}[0-9A-Z]+KT$" metar-str)]
-    (subs (last (re-find #"(\d+)[G|KT]" wind-str)) 3 5)))
+  (let [wind-str (find-part #"\d{3}[0-9A-Z]+KT$" metar-str)
+        speed-str (last (re-find #"(\d+)[G|KT]" wind-str))]
+    (if (empty? speed-str)
+      nil
+      (subs speed-str 3 5))))
 
 (defn wind-gust-knots
   [metar-str]
   (let [wind-str (find-part #"\d{3}[0-9A-Z]+KT$" metar-str)]
     (last (re-find #"G(\d+)KT" wind-str))))
 
-(defn visibility 
+(defn wind-variable
+  [metar-str]
+  (let [wind-str (find-part #"\d{3}V\d{3}" metar-str)]
+    (if (empty? wind-str)
+      ""
+      (let [from (last (re-find #"(\d{3})V\d{3}" wind-str))
+            to   (last (re-find #"\d{3}V(\d{3})" wind-str))]
+        [from to]))))
+
+(defn visibility-miles
   "Returns a string with the visibility."
   [metar-str]
-  (let [visibility-str (find-part #"\d+SM" metar-str)]
+  (let [visibility-str (find-part #"\d+\/?\d+SM" metar-str)]
     (string/replace visibility-str #"\D" "")))
 
 (defn temperature 
   "Returns a string with the temperature."
   [metar-str]
-  (let [tempdew-str (find-part #"\d+\/\d+" metar-str)]
-    (subs tempdew-str 0 2)))
+  (let [tempdew-str (find-part #"\d+\/M?\d+" metar-str)]
+    (last (re-find #"^(M?\d+)\/" tempdew-str))))
 
 (defn dewpoint 
   "Returns a string with the dewpoint."
   [metar-str]
-  (let [tempdew-str (find-part #"\d+\/\d+" metar-str)]
-    (subs tempdew-str 3 5)))
+  (let [tempdew-str (find-part #"\d+\/M?\d+" metar-str)]
+    (last (re-find #"\/(M?\d+)$" tempdew-str))))
 
 (defn altimiter 
   "Returns a string of the altimiter setting in inHg."
@@ -87,8 +101,13 @@
 (defn sky-conditions
   "Returns a vector of maps for the sky conditions."
   [metar-str]
-  (let [condition-parts (find-parts #"(SKC|CLR|NSC|FEW|SCT|BKN|OVC)\d{3}" metar-str)]
+  (let [condition-parts (find-parts #"(SKC|CLR|NSC|FEW|SCT|BKN|OVC)\d{0,3}" metar-str)]
     (map (fn [condstr] { :kind (subs condstr 0 3) :altitude (subs condstr 3) }) condition-parts)))
+
+(defn phenomena
+  "Returns a vector of strings describing current weather phenomena."
+  [metar-str]
+  (let [phenomena-parts (find-parts #"TS|DR|SH|MI|FZ|BC|BL|PR|RA|DZ|SN|GR|GS|PL|SG|IC|UP" metar-str)]
 
 (defn summary
   "Returns a map of all data from a METAR string."
@@ -101,8 +120,10 @@
     :wind-direction   (wind-direction metar-str)
     :wind-speed-knots (wind-speed-knots metar-str)
     :wind-gust-knots  (wind-gust-knots metar-str)
-    :visibility       (visibility metar-str)
+    :wind-variable    (wind-variable metar-str)
+    :visibility-miles (visibility-miles metar-str)
     :sky-conditions   (sky-conditions metar-str)
+    :phenomena        (phenomena metar-str)
     :temperature      (temperature metar-str)
     :dewpoint         (dewpoint metar-str)
     :altimiter        (altimiter metar-str)
