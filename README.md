@@ -44,6 +44,7 @@ user=> (metar/parse "KSFO 042256Z 30015G22KT 10SM FEW008 19/11 A2985 RMK AO2 SLP
 
 - [Wikipedia METAR](http://en.wikipedia.org/wiki/METAR)
 - [Detailed breakdown](http://www.uscg.mil/auxiliary/missions/auxair/metar_taf.pdf)
+- [AIM breakdown](https://www.faa.gov/air_traffic/publications/atpubs/aim/aim0701.html#aim0701.html.62)
 - [WMO Specification](http://www.wmo.int/pages/prog/www/WMOCodes/Manual/WMO306_Vol-I-1-PartA.pdf)
 - [Ruby implementation](https://github.com/joeyates/metar-parser)
 - [Python implementation](https://pypi.python.org/pypi/metar/1.4.0)
